@@ -31,3 +31,10 @@ az deployment group create --name $templateName --resource-group $rgName --templ
 #list storage accounts
 az storage account list --output table
 az storage account list -g $rgName --output table
+
+$storageName='akrstorage'
+$storageSKU ='standard_LRS'
+
+# Create s Storage Account with the storageName and SKU from Parameters 
+$storageSKU = 'StandardLRS' 
+az deployment group create --name $templateName --resource-group $rgName --template-file $templateFile --parameters storageName=$storageName storageSKU=$storageSKU 

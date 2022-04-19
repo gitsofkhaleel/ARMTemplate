@@ -1,13 +1,25 @@
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
+  "parameters":{ 
+    "storageName":
+    { "type": "string", 
+    "minLength": 4, 
+    "maxLength": 24 
+    }, 
+    "storageSKU":
+    { "type": "string", 
+    "defaultValue": "Standard_LRS", 
+    "allowedValues": [ "standard_LRS", "Standard_GRS", "standard_RAGRs", "Premium_ZRS"]
+    } 
+},
   "resources":[ 
     {"type": "Microsoft.Storage/storageAccounts",
      "apiVersion": "2019-04-01", 
-     "name": "akrstorage12345", 
+     "name": "[parameters('storagename')]", 
      "location": "East US", 
      "sku":{ 
-       "name": "Standard_LRS"
+       "name": "[parameters('storageSKU')]"
        },
        "kind": "StorageV2", 
        "properties":{
