@@ -1,0 +1,33 @@
+#to configure azure cli
+az configure 
+#login to azure
+az login
+#get all azure subscriptions
+az account list --all
+#set account default
+az account set --subscription "Azure Pass - Sponsorship"
+#Get all resource group
+az group list --output table
+
+##########
+#create resource group
+az group create --name rg-arm --location 'east us'
+#delete resource group
+az group delete --name rg-arm --no-wait --yes
+
+#variables
+$rgName = 'rg-armtemplate'
+$location = 'East US'
+$templateFile = 'AKRAzureTemplate.json'
+$templateName = 'blankTemplate'
+
+$templateName = 'resourceTemplate'
+#create resource group
+az group create --name $rgName --location $location
+
+#create template
+az deployment group create --name $templateName --resource-group $rgName --template-file $templateFile
+
+#list storage accounts
+az storage account list --output table
+az storage account list -g $rgName --output table
