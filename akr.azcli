@@ -43,3 +43,8 @@ az deployment group create --name $templateName --resource-group $rgName --templ
 $templateName = 'functionTemplate'
 
 az deployment group create --name $templateName --resource-group $rgName --template-file $templateFile --parameters storageName=$storageName storageSKU=$storageSKU 
+
+
+$templateName = 'variableTemplate'
+
+az deployment group create --name $templateName --resource-group $rgName --template-file $templateFile --parameters storageName=$storageName storageSKU=$storageSKU 
