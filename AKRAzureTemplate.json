@@ -11,13 +11,14 @@
     { "type": "string", 
     "defaultValue": "Standard_LRS", 
     "allowedValues": [ "standard_LRS", "Standard_GRS", "standard_RAGRs", "Premium_ZRS"]
-    } 
+    },
+    "location": {"type": "string", "defaultvalue": "[resourceGroup().location]"}
 },
   "resources":[ 
     {"type": "Microsoft.Storage/storageAccounts",
      "apiVersion": "2019-04-01", 
      "name": "[parameters('storagename')]", 
-     "location": "East US", 
+     "location": "[parameters('location')]", 
      "sku":{ 
        "name": "[parameters('storageSKU')]"
        },
